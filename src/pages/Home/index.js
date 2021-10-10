@@ -1,17 +1,12 @@
 
 import { Container } from './styles';
-import Footer from '../../components/footer';
-
+import {MonthButton} from '../../components/MonthButton';
 
 function Home() {
 
-   
-
-   
    return(
       <Container>
-         <h1>Home</h1>
-         <Footer />
+         <MonthButton />
       </Container>
    );
 }

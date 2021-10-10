@@ -1,11 +1,24 @@
-import { Container } from './styles';
+import { useState, useEffect } from "react";
 
-function Modal() {
-   return(
-      <Container>
-         <h1>Modal</h1>
-      </Container>
-   );
-}
+import { Overlay, Content, CloseIcon } from "./styles";
 
-export default Modal;
+export const Modal = ({ modalOpen, onCloseModal }) => {
+  function handleCloseModal(event) {
+    const classList = Array.from(event.target.classList);
+
+    const clickedOutsideModal = classList.includes("modal-overlay");
+
+    if (clickedOutsideModal) {
+      onCloseModal();
+    }
+  }
+
+  return (
+    <Overlay  modalOpen={modalOpen} className="modal-overlay" onClick={handleCloseModal}>
+      <Content modalOpen={modalOpen}>
+        <CloseIcon onClick={onCloseModal}>X</CloseIcon>
+        Aqui dentro do modal
+      </Content>
+    </Overlay>
+  );
+};
